@@ -1,0 +1,22 @@
+.heading {
+  background-color: aqua;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.btn1 {
+  background-color: grey;
+  height: 100px;
+  width: 100px;
+  padding: auto;
+  margin-right: 20px;
+}
+.btn2 {
+  background-color: rosybrown;
+  height: 100px;
+  width: 100px;
+  padding: auto;
+}
