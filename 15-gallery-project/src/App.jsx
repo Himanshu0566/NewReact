@@ -6,14 +6,17 @@ function App() {
   const [index, setIndex] = useState(1);
   const getData = async () => {
     const res = await axios.get(
-      "https://picsum.photos/v2/list?page=3&limit=30",
+      `https://picsum.photos/v2/list?page=${index}&limit=12`,
     );
     setUserData(res.data);
   };
 
-  useEffect(function () {
-    getData();
-  }, []);
+  useEffect(
+    function () {
+      getData();
+    },
+    [index],
+  );
   let printUserData = (
     <h3 className="text-xs text-gray-400">No user avalable</h3>
   );
@@ -42,10 +45,23 @@ function App() {
       <div className="bg-black h-screen overflow-auto text-white p-4">
         <div className="flex flex-wrap gap-4 p-2">{printUserData}</div>
         <div className="flex justify-center gap-6  items-center p-4">
-          <button className="bg-amber-400 text-sm cursor-pointer active:scale-95 text-black rounded px-4 py-2 font-semibold">
+          <button
+            className="bg-amber-400 text-sm cursor-pointer active:scale-95 text-black rounded px-4 py-2 font-semibold"
+            onClick={() => {
+              if (index > 1) {
+                setIndex(index - 1);
+              }
+            }}
+          >
             prev
           </button>
-          <button className="bg-amber-400 text-sm cursor-pointer active:scale-95 text-black rounded px-4 py-2 font-semibold">
+          <h1>Page{index}</h1>
+          <button
+            className="bg-amber-400 text-sm cursor-pointer active:scale-95 text-black rounded px-4 py-2 font-semibold"
+            onClick={() => {
+              setIndex(index + 1);
+            }}
+          >
             next
           </button>
         </div>
